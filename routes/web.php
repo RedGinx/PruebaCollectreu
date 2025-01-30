@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\carta;
+use App\Models\Carta;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\IndexController;
 
-Route::get('/index', [PruebaController::class, 'index'])->name('index');
+Route::get('/index', [IndexController::class, 'index'])->name('index');
 
 Route::get('/', function () {
     return view('welcome');

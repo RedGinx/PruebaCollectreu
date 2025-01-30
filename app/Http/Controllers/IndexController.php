@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carta;
 use Illuminate\Http\Request;
 
-class PruebaController extends Controller
+class IndexController extends Controller
 {
     // Método index con paginación y filtros
     public function index(Request $request)

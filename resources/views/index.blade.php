@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CATÁLOGO</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body class="bg-gray-100 text-gray-800">
     <div class="container mx-auto p-8">
@@ -41,36 +43,46 @@
 
         <!-- Cartas -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            @foreach ($cartas as $carta)
-                @php
-                    $imagePath = public_path('storage/images/' . $carta->key . '.png');
-                @endphp
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <div class="card-header bg-success mb-4">
-                        <p class="text-white">Nombre: {{ $carta->key }}</p>
-                    </div>
-                    <div class="card-body">
-                        <p>Número de colección: {{ $carta->number }}</p>
-                        <p>Expansión: {{ $carta->expansion }}</p>
-                        @if (File::exists($imagePath))
-                            <img src="{{ asset('storage/images/' . $carta->key . '.png') }}" width="200" class="mx-auto">
-                        @else
-                            <img src="{{ asset('storage/images/backcard.png') }}" width="200" class="mx-auto">
-                        @endif
-                    </div>
-                    <div class="card-footer">
-                        <p>Código: {{ $carta->name }} - {{ $carta->expansion_alt }} - {{ $carta->number }}</p>
-                    </div>
-                </div>
-            @endforeach
+        @foreach ($cartas as $carta)
+        @php
+            $imagePath = public_path('storage/images/' . $carta->key . '.png');
+        @endphp
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="card-header bg-success mb-4">
+                <p class="text-white">Nombre: {{ $carta->key }}</p>
+            </div>
+            <div class="card-body">
+                <p>Número de colección: {{ $carta->number }}</p>
+                <p>Expansión: {{ $carta->expansion }}</p>
+                @if (File::exists($imagePath))
+                    <img 
+                        src="{{ asset('storage/images/' . $carta->key . '.png') }}"
+                        style="cursor: pointer; width: 150px; height: auto;" 
+                        width="200" class="mx-auto"
+                        wire:click="showModal({{ $carta->key }}, {{ $carta->expansion }}, {{ $carta->number }})">
+                        
+                @else
+                    <img src="{{ asset('storage/images/backcard.png') }}" width="200" class="mx-auto">
+                @endif
+            </div>
+            <div class="card-footer">
+                <p>Código: {{ $carta->name }} - {{ $carta->expansion_alt }} - {{ $carta->number }}</p>
+            </div>
         </div>
+    @endforeach
+</div>
+    @if($showModal)
+        @include('livewire.carta-model')
+    @endif
+
 
         <!-- Paginación -->
         <div class="mt-6 flex justify-center">
             {{ $cartas->links('pagination::tailwind') }}
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
 </body>
 </html>
