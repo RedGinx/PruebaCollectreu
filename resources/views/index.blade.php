@@ -59,8 +59,7 @@
                     <img 
                         src="{{ asset('storage/images/' . $carta->key . '.png') }}"
                         style="cursor: pointer; width: 150px; height: auto;" 
-                        width="200" class="mx-auto"
-                        wire:click="showModal({{ $carta->key }}, {{ $carta->expansion }}, {{ $carta->number }})">
+                        width="200" class="mx-auto">
                         
                 @else
                     <img src="{{ asset('storage/images/backcard.png') }}" width="200" class="mx-auto">
@@ -72,9 +71,6 @@
         </div>
     @endforeach
 </div>
-    @if($showModal)
-        @include('livewire.carta-model')
-    @endif
 
 
         <!-- Paginación -->

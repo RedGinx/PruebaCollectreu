@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cartas', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->string('key');              // Clave de la carta
             $table->string('name');             // Nombre de la carta
@@ -23,13 +23,13 @@ return new class extends Migration
             $table->timestamps();               // Fechas de creación y actualización
         });
     }
-    
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('cartas');
+        Schema::dropIfExists('cards');
     }
 };

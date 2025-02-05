@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Carta extends Model
+class Card extends Model
 {
     use HasFactory;
 
-    protected $table = 'cartas';
+    protected $table = 'cards';
 
     protected $fillable = [
         'key',

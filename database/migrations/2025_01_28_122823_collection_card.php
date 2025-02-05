@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('collection_card', function (Blueprint $table) {
-            $table->foreignId('collection_id')->constrained()->onDelete('cascade');            
-            $table->foreignId('card_id')->constrained()->onDelete('cascade');
+            $table->foreignId('collection_id')->constrained('collections', 'id')->onDelete('cascade');
+            $table->foreignId('card_id')->constrained('cards', 'id')->onDelete('cascade'); // Cambiado de card_id a carta_id
             $table->integer('quantity')->default(1);
             $table->timestamps();
-            $table->primary(['collection_id', 'card_id']);
+            $table->primary(['collection_id', 'card_id']); // Cambiado de card_id a carta_id
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('collection_card');
+        //Schema::dropIfExists('collection_card');
     }
 };

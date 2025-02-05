@@ -20,14 +20,26 @@ class Collection extends Model
      // Relación con el usuario
      public function user(): BelongsTo
      {
-         return $this->belongsTo(User::class);
+         return $this->belongsTo(
+             User::class
+         );
      }
- 
-     // Relación con las cartas (a través de la tabla pivote)
-     public function cards(): BelongsToMany
-     {
-         return $this->belongsToMany(Card::class, 'collection_card')
-                     ->withPivot('quantity')
-                     ->withTimestamps();
-     }   
+
+     // Relación con las cartas (tabla pivote)
+    /*public function cartas(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            Carta::class,
+            'collection_card')
+            ->withPivot('quantity')
+            ->withTimestamps();
+    }*/
+    public function cards(): BelongsToMany
+    {
+    return $this->belongsToMany(
+        Card::class,
+        'collection_card')
+        ->withPivot('quantity')
+        ->withTimestamps();
+    }
 }
