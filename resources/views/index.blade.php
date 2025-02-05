@@ -43,30 +43,30 @@
 
         <!-- Cartas -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        @foreach ($cartas as $carta)
+        @foreach ($cards as $card)
         @php
-            $imagePath = public_path('storage/images/' . $carta->key . '.png');
+            $imagePath = public_path('storage/images/' . $card->key . '.png');
         @endphp
 
         <div class="bg-white p-6 rounded-lg shadow-lg">
             <div class="card-header bg-success mb-4">
-                <p class="text-white">Nombre: {{ $carta->key }}</p>
+                <p class="text-white">Nombre: {{ $card->key }}</p>
             </div>
             <div class="card-body">
-                <p>Número de colección: {{ $carta->number }}</p>
-                <p>Expansión: {{ $carta->expansion }}</p>
+                <p>Número de colección: {{ $card->number }}</p>
+                <p>Expansión: {{ $card->expansion }}</p>
                 @if (File::exists($imagePath))
-                    <img 
-                        src="{{ asset('storage/images/' . $carta->key . '.png') }}"
-                        style="cursor: pointer; width: 150px; height: auto;" 
+                    <img
+                        src="{{ asset('storage/images/' . $card->key . '.png') }}"
+                        style="cursor: pointer; width: 150px; height: auto;"
                         width="200" class="mx-auto">
-                        
+
                 @else
                     <img src="{{ asset('storage/images/backcard.png') }}" width="200" class="mx-auto">
                 @endif
             </div>
             <div class="card-footer">
-                <p>Código: {{ $carta->name }} - {{ $carta->expansion_alt }} - {{ $carta->number }}</p>
+                <p>Código: {{ $card->name }} - {{ $card->expansion_alt }} - {{ $card->number }}</p>
             </div>
         </div>
     @endforeach
@@ -75,7 +75,7 @@
 
         <!-- Paginación -->
         <div class="mt-6 flex justify-center">
-            {{ $cartas->links('pagination::tailwind') }}
+            {{ $cards->links('pagination::tailwind') }}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

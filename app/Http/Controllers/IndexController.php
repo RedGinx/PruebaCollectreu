@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Carta;
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -11,7 +11,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         // Construcción de la consulta con filtros
-        $query = Carta::query();
+        $query = Card::query();
 
         // Filtro por nombre
         if ($request->has('name') && !empty($request->name)) {
@@ -29,9 +29,9 @@ class IndexController extends Controller
         }
 
         // Paginación de 20 cartas por página
-        $cartas = $query->paginate(20);
+        $cards = $query->paginate(20);
 
         // Devolver la vista con las cartas filtradas y paginadas
-        return view('index', compact('cartas'));
+        return view('index', compact('cards'));
     }
 }
