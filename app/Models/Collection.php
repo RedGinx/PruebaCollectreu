@@ -42,4 +42,6 @@ class Collection extends Model
         ->withPivot('quantity')
         ->withTimestamps();
     }
+
+
 }
