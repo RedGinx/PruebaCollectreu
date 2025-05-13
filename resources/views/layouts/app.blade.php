@@ -34,13 +34,31 @@
                     <ul class="navbar-nav me-auto">
                         @if(Route::has('login'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('collections.create') }}"> Crear Colección </a>
+                                adios
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('collections.index') }}"> Mis Colecciones</a>
+                                adios
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('collections.random') }}">Colecciones de la Comunidad</a>
+                                adios
+                            </li>
+
+                            <!-- Dropdown para el Marketplace -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarMarketplaceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Marketplace
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarMarketplaceDropdown">
+                                    <li>
+                                        hola
+                                    </li>
+                                    <li>
+                                        hola
+                                    </li>
+                                    <li>
+                                        hola
+                                    </li>
+                                </ul>
                             </li>
                         @endif
                     </ul>

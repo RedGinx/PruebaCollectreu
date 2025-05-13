@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class
@@ -26,6 +27,12 @@ HomeController extends Controller
     {
         $user = auth()->user();
         $collections = $user->collections()->orderBy('updated_at', 'desc')->take(4)->get();
-        return view('home', compact('collections'));
+
+        $transactions = Transaction::where('buyer_id', $user->id)
+            ->with('listing')
+            ->latest()
+            ->paginate(5);
+
+        return view('home', compact('collections', 'transactions'));
     }
 }

@@ -21,8 +21,8 @@ class UserController2 extends Controller
         } else {
             $filtro = "";
         }
-//        $usuarios = User::where("email", "like", "%" . $filtro . "%")->paginate(5);
-        $usuarios = User::where("email", "like", "%" . $filtro . "%")->get();
+//        $usuarios = User::where("emails", "like", "%" . $filtro . "%")->paginate(5);
+        $usuarios = User::where("emails", "like", "%" . $filtro . "%")->get();
         return view("show.users.index", [
             "usuarios" => $usuarios,
             "busq" => $filtro
